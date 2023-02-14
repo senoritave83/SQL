@@ -1,0 +1,65 @@
+alter FUNCTION [dbo].[getRespostaEntidade](@IDVISITA AS INT, @TIPOENTIDADE AS TINYINT, @IDREFERENCIA AS INT, @IDPERGUNTA AS INT, @IDEMPRESA AS INT)
+RETURNS VARCHAR(500)
+AS
+BEGIN
+	DECLARE @RET AS VARCHAR(500),
+	        @CODPROD AS VARCHAR(100)
+	SET @RET = '' 
+	SET @CODPROD = ''
+
+	SELECT @RET = @RET + vir_Resposta_chr +  ', '
+	   FROM dbo.TB_REP_VisitaResposta_vir vir (NOLOCK)
+	   left JOIN TB_REP_Pergunta_prg prg (NOLOCK) ON vir.prg_Pergunta_int_FK = prg.prg_Pergunta_int_PK AND vir.emp_empresa_int_fk = prg.emp_empresa_int_fk
+	   --left JOIN dbo.TB_REP_VisitaProduto_vsp vsp (NOLOCK) ON vir.vis_Visita_int_FK = vsp.vis_Visita_int_FK AND vsp.emp_Empresa_int_FK = vir.emp_Empresa_int_FK
+       --left JOIN dbo.TB_REP_Produto_prd prd (NOLOCK) ON prd.prd_Produto_int_PK = vsp.prd_Produto_int_FK AND prd.emp_Empresa_int_FK = vsp.emp_Empresa_int_FK
+       WHERE vir.vis_Visita_int_FK = @IDVISITA 
+     AND vir.emp_Empresa_int_FK = @IDEMPRESA
+     AND vir_TipoEntidade_ind = @TIPOENTIDADE
+     AND vir_referencia_int_FK = @IDREFERENCIA
+     AND prg_Pergunta_int_FK = @IDPERGUNTA
+
+	SET @RET =  SUBSTRING(@RET, 0, LEN(@RET)) 
+				
+	RETURN @RET
+
+END
+
+go 
+
+SELECT dbo.getRespostaEntidade(1405, 7, 197, 169, 10)
+
+--@RET = @RET + vir_Resposta_chr + ' - ' + prd_Descricao_chr + ', '
+
+DECLARE @RET AS VARCHAR(500),
+	        @CODPROD AS VARCHAR(100)
+	SET @RET = '' 
+	SET @CODPROD = ''
+
+	SELECT * --@RET = @RET + vir_Resposta_chr + ' - ' + prd_Descricao_chr + ', '
+	   FROM dbo.TB_REP_VisitaResposta_vir vir (NOLOCK)
+	   left JOIN TB_REP_Pergunta_prg prg (NOLOCK) ON vir.prg_Pergunta_int_FK = prg.prg_Pergunta_int_PK AND vir.emp_empresa_int_fk = prg.emp_empresa_int_fk
+	   --left JOIN dbo.TB_REP_VisitaProduto_vsp vsp (NOLOCK) ON vir.vis_Visita_int_FK = vsp.vis_Visita_int_FK AND vsp.emp_Empresa_int_FK = vir.emp_Empresa_int_FK
+       --left JOIN dbo.TB_REP_Produto_prd prd (NOLOCK) ON prd.prd_Produto_int_PK = vsp.prd_Produto_int_FK AND prd.emp_Empresa_int_FK = vsp.emp_Empresa_int_FK
+       WHERE vir.vis_Visita_int_FK = 1405 
+     AND vir.emp_Empresa_int_FK = 10
+     AND vir_TipoEntidade_ind = 7
+     AND vir_referencia_int_FK = 197
+     AND prg_Pergunta_int_FK = 169
+
+
+
+
+
+
+
+
+
+   SELECT vir_Resposta_chr ,prd_Descricao_chr,prd_CodigoBarras_chr
+   
+   FROM dbo.TB_REP_VisitaResposta_vir vir (NOLOCK)  
+   INNER JOIN dbo.TB_REP_VisitaProduto_vsp vsp ON vir.vis_Visita_int_FK = vsp.vis_Visita_int_FK AND vsp.emp_Empresa_int_FK=vir.emp_Empresa_int_FK
+   INNER JOIN dbo.TB_REP_Produto_prd prd ON prd.prd_Produto_int_PK =vsp.prd_Produto_int_FK AND prd.emp_Empresa_int_FK = vsp.emp_Empresa_int_FK
+   
+   
+   
+   sp_helptext [dbo.getRespostaEntidade]

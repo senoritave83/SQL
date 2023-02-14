@@ -1,0 +1,26 @@
+INSERT INTO [XMPromotores_MeadJohnson].[dbo].[TB_REP_LojaSegmentacao_ljs]
+           ([emp_Empresa_int_FK]
+           ,[loj_Loja_int_FK]
+           ,[sct_SubCategoria_int_FK]
+           ,[cat_Categoria_int_FK]
+           ,[prd_Produto_int_FK]
+           ,[ljs_Ativo_ind])
+     SELECT
+           9 Empresa,
+           [loj_Loja_int_FK]Loja
+           ,5 subcategoria
+           ,3 categoria
+           ,108 produto
+           ,1 ativo
+      FROM [XMPromotores_MeadJohnson].[dbo].[TB_REP_LojaSegmentacao_ljs]ljs
+      INNER JOIN TB_REP_Loja_loj loj ON ljs.loj_Loja_int_FK = loj.loj_Loja_int_PK
+     -- WHERE cli_Cliente_int_FK= 29 
+      where prd_Produto_int_FK <> 0 AND sct_SubCategoria_int_FK <> 0 and [cat_Categoria_int_FK]<>0 GROUP BY [loj_Loja_int_FK] ORDER BY loj_Loja_int_FK
+      
+      
+      
+      
+      
+
+
+

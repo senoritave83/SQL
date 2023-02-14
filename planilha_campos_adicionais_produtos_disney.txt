@@ -1,0 +1,25 @@
+
+SELECT[prd_Produto_int_PK]ID_PRODUTO
+      ,[prd_Codigo_chr]CODIGO_PRODUTO
+      ,[prd_Descricao_chr]DESCRICAO
+      ,[sct_SubCategoria_chr]CATEGORIA
+      ,[cat_Categoria_chr]SEGMENTO
+      ,[for_Fornecedor_chr]MARCA
+      ,[prd_PrecoSugerido_cur]PRECO_SUGERIDO
+      ,[prd_PrecoMinimo_cur]PRECO_MINIMO
+      ,[prd_PrecoMaximo_cur]PRECO_MAXIMO
+      ,[prd_CodigoBarras_chr]CODIGO_DE_BARRAS
+      ,CASE[prd_StatusComercio_ind]WHEN 1 THEN 'EM LINHA'  ELSE 'FORA DE LINHA' END STATUS_COMERCIO
+      ,Case [prd_StatusPesquisa_ind] WHEN 1 THEN 'SIM' ELSE 'NAO' END STATUS_PESQUISA
+      ,dbo.getValorCampoAdicional('Produto', 'Franchise', [prd_Produto_int_PK], prd.emp_Empresa_int_FK)Franchise
+	  ,dbo.getValorCampoAdicional('Produto', 'Property', [prd_Produto_int_PK], prd.emp_Empresa_int_FK)Property
+       ,dbo.getValorCampoAdicional('Produto', 'Razão Social do Fabricante', [prd_Produto_int_PK], prd.emp_Empresa_int_FK)[Razão Social do Fabricante]
+	   ,dbo.getValorCampoAdicional('Produto', 'Nome Fantasia do Fabricante', [prd_Produto_int_PK], prd.emp_Empresa_int_FK)[Nome Fantasia do Fabricante]
+	   ,dbo.getValorCampoAdicional('Produto', 'Lob', [prd_Produto_int_PK], prd.emp_Empresa_int_FK)Lob
+	   ,dbo.getValorCampoAdicional('Produto', 'Category', [prd_Produto_int_PK], prd.emp_Empresa_int_FK)Category
+	   ,dbo.getValorCampoAdicional('Produto', 'Subcategory', [prd_Produto_int_PK], prd.emp_Empresa_int_FK)Subcategory
+          	
+  FROM [XMPromotores_Disney].[dbo].[TB_REP_Produto_prd]prd
+  INNER JOIN TB_REP_SubCategoria_sct sct ON sct.sct_SubCategoria_int_PK=prd.sct_SubCategoria_int_FK
+  INNER JOIN TB_REP_Categoria_cat cat ON cat.cat_Categoria_int_PK =sct.cat_Categoria_int_FK
+  INNER JOIN TB_REP_Fornecedor_for forne ON forne.for_Fornecedor_int_PK = prd.for_Fornecedor_int_FK

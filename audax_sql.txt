@@ -1,0 +1,39 @@
+INSERT INTO [TB_REP_VisitaResposta_vir] 
+      ([vis_Visita_int_FK]
+      ,[emp_Empresa_int_FK]
+      ,[prg_Pergunta_int_FK]
+      ,[vir_TipoEntidade_ind]
+      ,[vir_Referencia_int_FK]
+      ,[vir_ItemResposta_int]
+      ,[vir_Resposta_chr]
+       )
+      VALUES(
+      214,
+      24,
+      4,
+      1,
+      101009,
+      0,
+      'Sim')
+
+
+
+INSERT INTO [TB_REP_VisitaProduto_vsp]
+      ([vis_Visita_int_FK]
+      ,[emp_Empresa_int_FK]
+      ,[prd_Produto_int_FK]
+      ,[vsp_Encontrado_ind]
+      ,[vsp_VisualizouEstoque_ind]
+      ,[vsp_Estoque_int]
+      ,[vsp_Data_dtm]
+      )
+    VALUES( 
+         214
+        ,24
+        ,101010
+        ,1
+        ,1
+        ,1
+        ,GETDATE()
+        )
+  

@@ -1,0 +1,5 @@
+
+    update loj
+        set cli_cliente_int_fk = (SELECT [cli_Cliente_int_PK] FROM [TB_REP_Cliente_cli]CLI WHERE CLI.cli_RazaoSocial_chr =CAR.REVENDA)
+        From [CARGA_LOJAS_ABRIL2013]car 
+      INNER JOIN [TB_REP_Loja_loj]loj  ON CAR.[Codigo]=LOJ.loj_Codigo_chr

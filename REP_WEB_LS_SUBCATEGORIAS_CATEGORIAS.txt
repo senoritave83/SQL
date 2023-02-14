@@ -1,0 +1,39 @@
+ALTER PROCEDURE [dbo].[SP_REP_WEB_LS_SUBCATEGORIAS_CATEGORIAS]
+@IDEMPRESA int,
+@IDCATEGORIAS varchar(500),
+@IDMARCA varchar(500) = '0' /*for_fornecedor_int_pk*/
+
+AS
+BEGIN
+	SET NOCOUNT ON
+	
+	SELECT	sct_SubCategoria_int_PK IDSubCategoria, 
+			cat_Categoria_int_FK IDCategoria,
+			sct_SubCategoria_chr SubCategoria,
+			sct_Criado_dtm Criado
+	FROM	TB_REP_SubCategoria_sct sct (NOLOCK)
+	WHERE	emp_Empresa_int_FK = @IDEMPRESA
+	AND		(@IDCATEGORIAS = '0' OR cat_categoria_int_Fk in (select row from dbo.getTable(@IDCATEGORIAS, ',')))
+	AND		sct_Ativo_ind = 1
+	AND		(@IDMARCA = '0' OR cat_Categoria_int_FK IN(
+							SELECT	SCT.cat_Categoria_int_FK 
+							FROM	TB_REP_Produto_prd prd 
+							WHERE	prd.sct_SubCategoria_int_FK = sct_SubCategoria_int_PK AND prd.emp_Empresa_int_FK = SCT.emp_Empresa_int_FK
+							AND		for_Fornecedor_int_FK = @IDMARCA
+						)
+		)
+	ORDER BY sct_SubCategoria_chr
+END
+
+go
+[SP_REP_WEB_LS_SUBCATEGORIAS_CATEGORIAS]
+@IDEMPRESA = 10,
+@idcategorias = 0,
+@IDMARCA = '0'
+/*
+SELECT * FROM TB_REP_SubCategoria_sct
+
+SELECT * FROM TB_REP_Categoria_cat
+
+SELECT * FROM TB_REP_Produto_prd
+*/

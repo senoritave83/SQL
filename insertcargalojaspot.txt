@@ -1,0 +1,91 @@
+INSERT INTO [XMPromotores_Spot].[dbo].[BACKUP_LOJAS_ABRIL_2013_2]
+           (
+            [emp_Empresa_int_FK]
+           ,[cli_Cliente_int_FK]
+           ,[loj_Codigo_chr]
+           ,[loj_Loja_chr]
+           ,[loj_RazaoSocial_chr]
+           ,[loj_CNPJ_chr]
+           ,[loj_IE_chr]
+           ,[loj_Endereco_chr]
+           ,[loj_Numero_chr]
+           ,[loj_Complemento_chr]
+           ,[loj_Bairro_chr]
+           ,[loj_Cidade_chr]
+           ,[loj_UF_chr]
+           ,[loj_Cep_chr]
+           ,[loj_Contato_chr]
+           ,[loj_Cargo_chr]
+           ,[loj_Telefone_chr]
+           ,[loj_Celular_chr]
+           ,[loj_Fax_chr]
+           ,[loj_Email_chr]
+           ,[tlj_TipoLoja_int_FK]
+           ,[loj_Shopping_int_FK]
+           ,[reg_Regiao_int_FK]
+           ,[loj_Status_ind]
+           )
+     SELECT
+           11 ,
+           [IDRevenda],
+           [Codigo],
+           [Loja],
+           [RazaoSocial],
+           [CNPJ],
+           [IE],
+           [Endereco],
+           [Numero],
+           [Complemento],
+           [Bairro],
+           [Cidade],
+           [UF],
+           [Cep],
+           [Contato],
+           [Cargo],
+           [Telefone],
+           [Celular],
+           [Fax],
+           [Email],
+           CASE WHEN [Categoria do IMS]= 'MULTI-FORMAT' THEN 1 
+                WHEN [Categoria do IMS] ='TRADE TOY CHAIN - NATIONAL' THEN 2
+                WHEN [Categoria do IMS]= 'HYPERMARKET' THEN 3
+                WHEN [Categoria do IMS]= 'SALES FIELD' THEN 10
+                END,
+           [Shopping],
+           CASE WHEN [Regiao] = 'JOINVILLE' THEN 21
+                WHEN [Regiao] = 'UBERLANDIA' THEN 1
+                WHEN [Regiao] = 'ARACAJU' THEN 2
+                WHEN [Regiao] = 'BELÉM' THEN 4  
+                WHEN [Regiao] = 'BELO HORIZONTE' THEN 5
+                WHEN [Regiao] = 'RIO DE JANEIRO' THEN 33   
+                WHEN [Regiao] = 'SÃO JOSÉ DOS CAMPOS' THEN 46
+                WHEN [Regiao] = 'LITORAL SUL' THEN 22
+                WHEN [Regiao] = 'BLUMENAU' THEN 6
+                WHEN [Regiao] = 'BRASILIA' THEN 45
+                WHEN [Regiao] = 'CAMPINAS' THEN 9
+                WHEN [Regiao] = 'CASCAVEL' THEN 11   
+                WHEN [Regiao] = 'CURITIBA' THEN 15
+                WHEN [Regiao] = 'FLORIANÓPOLIS' THEN 16
+                WHEN [Regiao] = 'FORTALEZA' THEN 17
+                WHEN [Regiao] = 'GOIÂNIA' THEN 18  
+                WHEN [Regiao] = 'ITAJAÍ' THEN 19
+                WHEN [Regiao] = 'JOÃO PESSOA' THEN 20   
+                WHEN [Regiao] = 'LIMEIRA' THEN 47
+                WHEN [Regiao] = 'LONDRINA' THEN 23
+                WHEN [Regiao] = 'MACEIÓ' THEN 25
+                WHEN [Regiao] = 'MANAUS' THEN 26
+                WHEN [Regiao] = 'NATAL' THEN 27
+                WHEN [Regiao] = 'PORTO ALEGRE' THEN 28  
+                WHEN [Regiao] = 'PRESIDENTE PRUDENTE' THEN 30
+                WHEN [Regiao] = 'RECIFE' THEN 31
+                WHEN [Regiao] = 'RIBEIRÃO PRETO' THEN 32
+                WHEN [Regiao] = 'SALVADOR' THEN 34
+                WHEN [Regiao] = 'SÃO LUIS' THEN 37
+                WHEN [Regiao] = 'SÃO PAULO' THEN 38
+                WHEN [Regiao] = 'SOROCABA' THEN 39
+                WHEN [Regiao] = 'TERESINA' THEN 40
+                WHEN [Regiao] = 'VITÓRIA' THEN 43
+                END,
+                CASE WHEN [Status]= 'Ativo' THEN 1 END
+                FROM CARGAS_LOJAS_ABRIL2013 car
+              --INNER JOIN BACKUP_LOJAS_ABRIL_2013_2 t1  ON t1.[loj_Codigo_chr] = car.[Codigo]

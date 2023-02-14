@@ -1,0 +1,32 @@
+Para buscar linha – digite o “0”
+
+Para puxar ligação – digite “49”
+
+Para passar ligação digitar o botão “flash” + número correspondente ao ramal:
+
+ 
+
+Camilla (gerente de contas) / Marcelo (gerente de desenvolvimento e suporte) = 22
+
+ 
+
+Luis Felipe (novos projetos) = 23
+
+ 
+
+Franco (comercial e financeiro) = 24
+
+ 
+
+Igor (aplicativo: desenvolvimento, programação e suporte) = 25
+
+ 
+
+Daiana (Web designer) / Veronica (suporte e programação WEB) = 26
+
+ 
+
+Wagner (novos projetos) / Ariane (suporte e programação WEB)  / Wilson (relatórios) = 27
+
+ 
+

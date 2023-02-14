@@ -1,0 +1,5 @@
+SELECT *
+  FROM [itc].[dbo].[TB_PermissaoGrupo_pgr]pgr
+INNER JOIN [TB_GRUPOS_GRU]GRU ON gru.IDGRUPo=pgr.gru_Grupo_int_fk
+INNER JOIN [TB_Acao_aca] ACA on aca.[aca_Acao_int_PK] = pgr.aca_Acao_int_fk
+where gru_grupo_int_fk=6

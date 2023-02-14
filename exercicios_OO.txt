@@ -1,0 +1,37 @@
+1-As maneiras mais comuns de se definir um modelo são :
+A-perspectiva de um algoritmo e  perspectiva orientada a objetos
+
+2-Na perspectiva de um algoritmo, o principal bloco de construção de um software é :
+B-procedimento ou função
+
+3-Sobre POO, é correto afirmar que :
+E- Nenhuma das alternativas
+
+4-Sobre a programação modular, é errado afirmar que :
+C-Os módulos não podem se basear em um outro módulo
+
+5-Encapsulamento pode ser definido como :
+c-Tarefa de tornar um objeto o mais auto-suficiente possível
+ 
+6-Ao compararmos o conceito de Encapsulamento ao funcionamento de um carro, poderíamos afirmar que :
+A-Para o motorista, basta saber que o motor existe e que ele é responsável por movimentar o carro
+ 
+
+7-Podemos definir uma classe como :
+B-Uma abstração de algo do mundo real
+ 
+
+8-A estrutura de uma classe é composta por :
+D-Nome da classe, métodos e atributos
+ 
+
+9-Observando o trecho de código a seguir, conclui-se que :
+A-Trata-se de uma propriedade
+ 
+10-Um objeto pode ser definido como :
+D-A instância de uma classe
+
+11-Herança pode ser definida como :
+Resposta E -princípio da Programação Orientada a Objetos que permite que as classes compartilhem atributos e operações baseados em um relacionamento, geralmente generalização
+ 
+ 

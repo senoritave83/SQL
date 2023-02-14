@@ -1,0 +1,1 @@
+update [XMPromotores_PaoAcucar].[dbo].[TB_REP_Produto_prd] set prd_Ordem_int = right('00000'+ cast(prd_Produto_int_PK as varchar (5)),5)

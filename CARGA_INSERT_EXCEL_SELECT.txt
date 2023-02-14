@@ -1,0 +1,118 @@
+INSERT INTO [XMPromotores_NVH].[dbo].[TB_REP_Loja_loj]
+           ([emp_Empresa_int_FK]
+           ,[cli_Cliente_int_FK]
+           ,[loj_Codigo_chr]
+           ,[loj_Loja_chr]
+           ,[loj_CNPJ_chr]
+           ,[loj_IE_chr]
+           ,[loj_Endereco_chr]
+           ,[loj_Numero_chr]
+           ,[loj_Complemento_chr]
+           ,[loj_Bairro_chr]
+           ,[loj_Cidade_chr]
+           ,[loj_UF_chr]
+           ,[loj_Cep_chr]
+           ,[loj_Contato_chr]
+           ,[loj_Cargo_chr]
+           ,[loj_Telefone_chr]
+           ,[loj_Celular_chr]
+           ,[loj_Fax_chr]
+           ,[loj_Email_chr]
+           ,[tlj_TipoLoja_int_FK]
+           ,[loj_Shopping_int_FK]
+           ,[vis_UltimaVisita_int_FK]
+           ,[loj_DataSync_dtm]
+           ,[reg_Regiao_int_FK]
+           ,[loj_Status_ind]
+           ,[loj_Classificacao_chr]
+           ,[loj_Filial_chr]
+           ,[loj_RazaoSocial_chr]
+           ,[cls_ClassificacaoConsumo_int_FK]
+           ,[cls_ClassificacaoLoja_int_FK]
+           ,[cat_Segmento_int_FK]
+           ,[ope_Operadora_int_FK]
+           ,[loj_Tamanho_chr]
+           ,[loj_TamanhoEletronicos_chr]
+           ,[loj_GerenteConta_chr]
+           ,[loj_GerenteLoja_chr]
+           ,[loj_ContatoFoto_chr]
+           ,[loj_Observacao_chr])
+     select
+           18
+           ,CASE [REVENDA]
+            WHEN 'ARMARINHOS FERNANDO'THEN 1
+			WHEN'BLUEPOINT'THEN 2
+			WHEN'CAMICADO'THEN 3
+			WHEN'CLOVIS'THEN 4
+			WHEN'EXTRA' THEN 5
+			WHEN'INAWA' THEN 6
+			WHEN'JANDAIA'THEN 7
+			WHEN'KALUNGA' THEN 8
+			WHEN'LEPOK'	THEN 9
+			END
+           ,[CÓDIGO LOJA]
+           ,[LOJA]
+           ,[CNPJ]
+           ,ISNULL([IE],'')
+           ,[ENDEREÇO]
+           ,ISNULL([NÚMERO],'')
+           ,''
+           ,[BAIRRO]
+           ,[CIDADE]
+           ,[UF]
+           ,[CEP]
+           ,''
+           ,''
+           ,ISNULL([TELEFONE],'')
+           ,ISNULL([CELULAR],'')
+           ,ISNULL([FAX],'')
+           ,ISNULL([EMAIL],'')
+           ,CASE [TIPO DE LOJA] 
+            WHEN 'VAREJO' then 11
+            WHEN 'ATACADO'then 10
+            WHEN 'ATACAREJO' then 12
+            END
+			,CASE SHOPPING
+			WHEN RTRIM ('MAUÁ PLAZA SHOPPING') then 2
+			WHEN RTRIM ('SHOPPING ARICANDUVA')then 3
+			WHEN RTRIM ('SHOPPING PENHA') then 4
+			WHEN RTRIM ('SHOPPING INTERLAGOS')then 5
+			WHEN RTRIM ('SHOPPING MOOCA')then 6
+			WHEN RTRIM ('SHOPPING UNIÃO') then 7
+			WHEN RTRIM ('SHOPPING IGUATEMI') THEN 8
+			WHEN RTRIM ('SUZANO SHOPPUING CENTER') THEN 9
+			WHEN RTRIM ('GRAND PLAZA') THEN 10
+			ELSE 0
+			END
+           ,0
+           ,GETDATE()
+           ,CASE[REGIÃO]
+           WHEN 'ABCD'THEN 2
+           WHEN 'CENTRO' THEN 3
+           WHEN 'EXTREMO OESTE' THEN 4
+           WHEN 'EXTREMO ZONA SUL' THEN 5
+           WHEN 'NOROESTE' THEN 6
+           WHEN 'ZONA LESTE' THEN 7
+           WHEN 'ZONA NORTE' THEN  8
+           WHEN 'ZONA OESTE' THEN 9
+           WHEN 'ZONA SUL' THEN 10
+           WHEN 'EXTREMO ZONA LESTE'THEN 11
+           END
+           ,1
+           ,''
+           ,''
+           ,[RAZÃO SOCIAL]
+           ,0
+           ,0
+           ,0
+           ,0
+           ,''
+           ,''
+           ,''
+           ,ISNULL([GERENTE DA LOJA], '')
+           ,''
+           ,ISNULL([OBSERVAÇÕES],'')
+  
+           FROM [XMPromotores_NVH].[dbo].[Carga_Lojas_NVH]
+           
+           Select * from tb_rep_loja_loj

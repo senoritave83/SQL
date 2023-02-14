@@ -1,0 +1,84 @@
+
+1- É correto afirmar sobre interface:
+I - Responsável por proporcionar a comunicação entre o ser humano (usuário) e o hardware e software (de um sistema computacional).
+II - Interface é um sistema de comunicação que possui um componente físico, formado por hardware e software no qual o usuário percebe e manipula, e um componente conceitual, 
+onde o usuário interpreta, processa e raciocina.
+III - A interface é tanto um meio para a interação usuário-sistema, quanto uma ferramenta que oferece os instrumentos para este processo comunicativo, ou seja, um sistema de comunicação
+ 
+A-Somente a afirmação I está correta
+B-Somente a afirmação II está correta
+C-Somente a afirmação III está correta
+D-Somente as afirmações II e III estão corretas
+(E)-Todas as afirmações estão corretas
+ 
+
+2-Numa determinada empresa, 200 operadores em call center trabalham 8h por dia, com tempo médio de atendimento de 3 min. O diretor da empresa solicitou algumas modificações na interface do sistema utilizado pelos operadores. As mudanças resultaram numa economia de 10s no tempo de atendimento. Como base nessas informações, depois das modificações na interface do sistema, o número de atendimentos por dia passou a ser de:
+A-31912 atendimentos por dia
+B-32000 atendimentos por dia
+(C)-33882 atendimentos por dia
+D-16941 atendimentos por dia
+E-Nenhuma das alternativas
+
+ 
+3-Qual das características abaixo não faz parte do Design Participativo?
+A-Um dos objetivos é fazer com que os usuários se tornem um parceiro como os outros na equipe de projeto, participando de todas as atividades de desenvolvimento
+B-A inclusão do usuário final no processo de desenvolvimento se deve ao seu conhecimento nas rotinas de trabalho, além de servir como fonte de informação
+C-Através de sua participação ativa, o usuário proporciona contribuições efetivas em todas as fases do processo de desenvolvimento
+(D)-Possui uma avaliação central e, sempre que uma atividade for completada, seu trabalho deverá ser avaliado pelo usuário
+E-Nenhuma das alternativas
+
+
+4-Segundo o norma NBR ISO/IEC 9126-1 Usabilidade é:
+A-Medida na qual um produto pode ser usado por usuários específicos para alcançar objetivos específicos com eficácia, eficiência e satisfação em um contexto específico de uso
+B-Capacidade do produto de software de possibilitar ao usuário compreender se o software é apropriado e como ele pode ser usado para tarefas e condições de uso específicas
+(C)-Capacidade do produto de software de ser compreendido, aprendido, operado e atraente ao usuário, quando usado sob condições especificadas. É um atributo de qualidade de software
+D-Capacidade do produto de software de estar de acordo com normas, convenções, guias de estilo ou regulamentações relacionadas à usabilidade
+E-É a facilidade de uso por um especialista em software
+
+
+5-"Esta técnica é útil para entender procedimentos, regulamentações e padrões". Essa afirmação é uma carcterística de qual técnica de coleta de dados?
+A-Grupos de estudos especiais e workshops
+B-Entrevistas
+C-Questionários
+D-Observação natural
+(E)-Estudo de documentação
+ 
+ 
+6-Esta técnica é útil para a obtenção de resposta de um grande número de pessoas sobre questões específicas". Essa afirmação é uma carcterística de qual técnica de coleta de dados?
+A-Grupos de estudos especiais e workshops
+B-Entrevistas
+(C)-Questionários
+D-Observação natural
+E-Estudo de documentação
+ 
+7-Qual o objetivo da especificação de Testes?
+(A)-Descrever, em termos de procedimentos e estratégias, como o novo sistema será testado para verificar se as metas de usabilidade foram atingidas
+B-Testar a usabilidade do sistema
+C-Aumentar a usabilidade do sistema
+D-Criar uma documentação para o especialista em avaliação de usabilidade
+E-Nenhuma das alternativas
+
+8-Sobre a Aavaliação Preditiva, podemos afirmar:
+ 
+A-Na maioria dos casos, não envolve a participação de usuários reais
+B-Trabalha com modelos para predição e com diretrizes e heurísticas de design. Deste modo, é possível prever o comportamento do usuário e também avaliar as soluções de design propostas
+C-É uma técnica de baixo custo e de fácil aplicação
+D-Técnica através da qual se verifica se um projeto de interface está em acordo com as boas práticas de projeto (heurísticas), amplamente aceitos e de caráter mais geral
+(E)-Todas as afirmações estão corretas
+ 
+
+Cite ALGUNS MODELOS DE CICLO DE VIDA DE DESIGN DE INTERFACE DE USUÁRIO:
+•Modelo estrela
+•Engenharia de usabilidade
+•Projeto centrado no usuário
+•Design participativo
+
+
+Explique o modelo estrela:
+Diferentemente dos modelos propostos pela ES, o modelo estrela não especifica ordenamento algum das atividades. Um projeto pode começar de qualquer atividade. 
+Possui uma avaliação central e, sempre que uma atividade for completada, seu trabalho deverá ser avaliado. Desse modo, os requisitos, 
+o projeto e o produto evoluem gradualmente.
+
+Desvantagem:
+•Extremamente flexível
+•Baixa visão gerencial para os gerentes e desenvolvedores

@@ -1,0 +1,7 @@
+UPDATE prd
+set    [prd_PrecoVista_cur] =[CUSTO_A_VISTA]
+      ,[prd_PrecoPre_cur] = [CUSTO_PRÉ]
+      ,[prd_PrecoBoleto_cur] =[CUSTO_BOLETO]
+      ,[prd_PrecoUnitario_cur]= [PRECO_UNITARIO]
+  FROM [LupasLeitor].[dbo].[Produtos_custos]cus
+  INNER JOIN [TB_IBT_XML_Produto_prd] prd ON cus.Codigo = prd.prd_Codigo_chr

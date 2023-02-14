@@ -1,0 +1,1 @@
+  SELECT *  into BACKUP_LOJAS_ABRIL_2013 FROM TB_REP_Loja_loj  

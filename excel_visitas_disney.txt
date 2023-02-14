@@ -1,0 +1,53 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP 1000 [vis_Visita_int_PK]ID_VISITA
+      ,[loj_Loja_int_FK]ID_LOJA
+      ,loj.loj_Loja_chr LOJA
+      ,[vis_DataInicio_dtm]INICIO_VISITA
+      ,[vis_DataFinalizacao_dtm]FINAL_VISITA
+      ,[vis_Data_dtm]DATA_VISITA
+      ,[vis_NumDevice_int]
+      ,[vis_Status_int]STATUS_VISITA
+      ,[vis_NumProdutosVisita_int]NUMERO_PRODUTOS_VISITA
+      ,[tjf_TipoJustificativa_chr]JUSTIFICATIVA_VISITA
+      ,[vis_LatitudeInicio_num]VISITA_LATITUDE_INICIO
+      ,[vis_LatitudeFinalizacao_num]VISITA_LATITUDE_FIM
+      ,[vis_LongitudeInicio_num]VISITA_LONGITUDE_INICIO
+      ,[vis_LongitudeFinalizacao_num]VISITA_LONGITUDE_FIM
+      ,CASE[vis_StatusVisita_ind]WHEN 1 THEN 'ATIVO' ELSE 'INATIVO' END STATUS_VISITA
+      ,[vis_DataEmissao_dtm]DATA_EMISSAO_VISITA
+      ,CASE[vir_TipoEntidade_ind]
+       WHEN 4 THEN 'CATEGORIA' 
+       WHEN 5 THEN 'SEGMENTO'
+       WHEN 7 THEN 'LOJA'
+       ELSE 'SEM TIPO'
+       END TIPO_PERGUNTA
+      ,[vir_Referencia_int_FK]
+      ,[vir_ItemResposta_int]
+      ,[evp_EventoPromotor_int_PK]
+      ,[tev_TipoEvento_int_FK]
+      ,[evp_DataInicio_dtm]
+      ,[evp_LatitudeInicio_num]
+      ,[evp_LongitudeInicio_num]
+      ,[evp_DataFinalizacao_dtm]
+      ,[evp_LatitudeFinalizacao_num]
+      ,[evp_LongitudeFinalizacao_num]
+      ,[evp_ObservacaoInicio_chr]
+      ,[evp_ObservacaoFinalizacao_chr]
+      ,[prg_Pergunta_int_PK]
+      ,[prg_Pergunta_chr]
+      ,[vir_Resposta_chr]
+      ,[prg_MultiResposta_ind]
+      ,[prg_TipoCampo_ind]
+      ,[prg_PerguntaLoja_ind]
+      ,[prg_Ativo_ind]
+      ,[prg_DescricaoRelatorio_chr]
+      ,[prg_Prioridade_int]
+      ,[prg_DataSync_dtm]
+      ,[prg_Minimo_num]
+      ,[prg_Maximo_num]
+      ,[prg_TipoDependencia_ind]
+      ,[prg_Dependente_int_FK]
+      ,[prg_DependenteValor_chr]
+  FROM [XMPromotores_Disney].[dbo].[Visita_BACKUP]BACK
+  INNER JOIN [TB_REP_Loja_loj]loj ON loj.loj_Loja_int_PK = back.loj_Loja_int_FK
+  INNER JOIN [TB_REP_TipoJustificativa_tjf]tjf	on back.tjf_TipoJustificativa_int_FK = TJF.tjf_TipoJustificativa_int_PK

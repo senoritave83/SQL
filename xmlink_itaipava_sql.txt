@@ -1,0 +1,2 @@
+[SP_ITP_XML_WEB_RPT_ACOMPANHAMENTO_PESQUISAS]40,'1/1/2013','2/28/2013 '
+--SELECT top 10 * from TB_ITP_XML_Pesquisa_pes where pes_Pesquisa_int_PK=1602

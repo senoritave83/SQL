@@ -1,0 +1,27 @@
+ 
+  INSERT INTO [XMPromotores_MeadJohnson].[dbo].[TB_REP_LojaSegmentacao_ljs]
+           ([emp_Empresa_int_FK]
+           ,[loj_Loja_int_FK]
+           ,[sct_SubCategoria_int_FK]
+           ,[cat_Categoria_int_FK]
+           ,[prd_Produto_int_FK]
+           ,[ljs_Ativo_ind])
+   select 9,
+          loj_Loja_int_PK,
+          (select  DISTINCT sct_SubCategoria_int_PK from TB_REP_SubCategoria_sct sct 
+   INNER JOIN TB_REP_Categoria_cat CAT ON sct.cat_Categoria_int_FK =  CAT.cat_Categoria_int_PK ),
+          prd_Produto_int_PK,
+          ( SELECT distinct cat_Categoria_int_FK FROM [TB_REP_SubCategoria_sct] sct 
+  INNER JOIN [TB_REP_Categoria_cat] cat ON cat.cat_Categoria_int_PK = sct.cat_Categoria_int_FK ),
+          prd_Produto_int_PK,
+          1   
+    from TB_REP_Loja_loj ,TB_REP_Produto_prd 
+  where loj_Loja_int_PK  IN( 
+  SELECT [loj_Loja_int_PK]
+       FROM [XMPromotores_MeadJohnson].[dbo].[TB_REP_Loja_loj]
+  WHERE cli_Cliente_int_FK =29 AND loj_UF_chr  <>'SP' )
+  AND
+  prd_Produto_int_PK not in( SELECT
+      [IdProduto]
+  FROM [XMPromotores_MeadJohnson].[dbo].[Carga_Seg_26022013_2]
+  INNER JOIN TB_REP_Loja_loj loj ON cli_Cliente_int_FK =IdCliente AND loj_UF_chr = ESTADO)

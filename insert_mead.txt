@@ -1,0 +1,35 @@
+INSERT INTO [XMPromotores_MeadJohnson].[dbo].[TB_REP_LojaSegmentacao_ljs]
+           ([emp_Empresa_int_FK]
+           ,[loj_Loja_int_FK]
+           ,[sct_SubCategoria_int_FK]
+           ,[cat_Categoria_int_FK]
+           ,[prd_Produto_int_FK]
+           ,[ljs_Ativo_ind])
+   select 9,
+          loj_Loja_int_PK,
+          (select sct_SubCategoria_int_PK 
+          from TB_REP_SubCategoria_sct a
+          inner join TB_REP_Produto_prd b on sct_SubCategoria_int_FK = sct_SubCategoria_int_pK
+			where b.prd_Produto_int_PK = PRD.prd_Produto_int_PK)
+          IdSubCategoria,
+          (select cat_Categoria_int_FK
+          from TB_REP_SubCategoria_sct a
+          inner join TB_REP_Produto_prd b on sct_SubCategoria_int_FK = sct_SubCategoria_int_pK
+			where b.prd_Produto_int_PK = PRD.prd_Produto_int_PK)
+          IdCategoria,
+          prd_produto_int_pk,
+          1   
+    from TB_REP_Loja_loj ,TB_REP_Produto_prd PRD
+  where loj_Loja_int_PK  IN( 
+  SELECT [loj_Loja_int_PK]
+       FROM [XMPromotores_MeadJohnson].[dbo].[TB_REP_Loja_loj]
+  WHERE cli_Cliente_int_FK =29 AND loj_UF_chr  <>'SP' )
+  AND
+  prd_Produto_int_PK IN( SELECT DISTINCT
+          prd_Produto_int_PK
+        FROM TB_REP_Produto_prd 
+  INNER JOIN TB_REP_Loja_loj loj ON cli_Cliente_int_FK =29 AND loj_UF_chr = 'SP' AND prd_Produto_int_PK <> 0)
+  order by loj_Loja_int_PK, prd_Produto_int_PK
+  
+  
+  

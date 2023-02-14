@@ -1,0 +1,26 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP 1000 [CODIGO]
+      ,[CLIENTE]
+      ,[CNPJ]
+      ,[IE]
+      ,[ENDERECO]
+      ,[NUMERO]
+      ,[COMPLEMENTO]
+      ,[BAIRRO]
+      ,[CIDADE]
+      ,[CEP]
+      ,[UF]
+      ,[TELEFONE]
+      ,[REFERENCIA]
+      ,[DESCONTOMAX]
+      ,[FILIAL]
+  FROM [XMLink_FMinas].[dbo].[TB_FDM_XML_TEMP_CLIENTE_DTS]
+  
+  
+  Select * From TB_FDM_XML_Cliente_cli 
+  
+  UPDATE TB_FDM_XML_TEMP_CLIENTE_DTS 
+  SET FILIAL = CASE FILIAL WHEN 4 Then '104' else '114' END
+  FROM [XMLink_FMinas].[dbo].[TB_FDM_XML_TEMP_CLIENTE_DTS]
+  
+  sELECT dbo.GETFILIAL(2, 1)

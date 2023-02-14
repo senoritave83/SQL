@@ -1,0 +1,1 @@
+(SELECT fil_Filial_int_PK FROM TB_FDM_XML_Filial_fil inner join TB_FDM_XML_Cliente_cli ON  fil_UF_chr= cli_UF_chr)

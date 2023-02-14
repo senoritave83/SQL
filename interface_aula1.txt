@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Aviao aviao = new Aviao();
+            Console.WriteLine("CARACTERISTICAS AVIAO >>>>>>>>>>");
+            aviao.Voar();
+                        IVoador outroAviao = new Aviao();
+            outroAviao.Voar();
+            Console.WriteLine();
+            Console.WriteLine("CARACTERISTICAS MARRECO >>>>>>>>>>");
+            Marreco marreco = new Marreco();
+            marreco.Voar();
+            marreco.Andar();
+           //marreco.Nadar();
+            Console.WriteLine();
+            IVoador outroMarreco = new Marreco();
+            outroMarreco.Voar();
+            outroMarreco.Acelerar();
+           //outroMarreco.Voar();
+            Console.WriteLine();
+            INadador maisUmMarreco = new Marreco();
+            maisUmMarreco.Nadar();
+            
+            Console.WriteLine();
+            Console.WriteLine("CARACTERISTICAS NADADOR >>>>>>>>>>");
+            INadador NadadorProfissional = new Nadador();
+            NadadorProfissional.Nadar();
+            
+            Console.ReadKey();
+        }
+        public interface IVoador
+        {
+            void Voar();
+            void Acelerar();
+        }
+        public interface INadador
+        {
+            void Nadar();
+        }
+        public interface IAndador
+        {
+            void Andar();
+        }
+        public class Aviao : IVoador
+        {
+            //campos e métodos de Aviao
+            public void Voar()
+            {
+                Console.WriteLine("O avião voou");
+            }
+            public void Acelerar() 
+            {
+                Console.WriteLine("O Aviao acelerou");
+            }
+        }
+        public class Marreco : IVoador, INadador, IAndador
+        {
+            //campos e métodos de Marreco
+            public void Voar()
+            {
+                Console.WriteLine("O marreco voou");
+            }
+            public void Nadar()
+            {
+                Console.WriteLine("o marreco nadou");
+            }
+            public void Acelerar()
+            {
+                Console.WriteLine("O Marreco acelerou");
+            }
+            public void Andar() 
+            {
+                Console.WriteLine("O Marreco Andou");
+            }
+        }
+        public class Nadador : INadador
+        {
+                public void Nadar()
+                {
+                    Console.WriteLine("O Nadador Nadou");
+                }
+                
+        }
+    }
+}

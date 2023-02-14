@@ -1,0 +1,42 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT 
+       [cli_Cliente_int_FK]ID_Revenda
+       ,cli_RazaoSocial_chr Revenda
+       ,loj_Loja_int_PK IDLoja
+       ,[loj_Codigo_chr] CodigoLoja
+      ,[loj_Loja_chr] Loja
+      ,[loj_RazaoSocial_chr]Razao
+      ,[loj_CNPJ_chr]CNPJ
+      ,[loj_IE_chr] IE
+      ,[loj_Filial_chr]Filial
+      ,[loj_Endereco_chr]Endereço
+      ,[loj_Numero_chr]Numero
+      ,[loj_Complemento_chr]Complemento
+      ,[loj_Bairro_chr]Bairro
+      ,[loj_Cidade_chr]Cidade
+      ,[loj_UF_chr]UF
+      ,[loj_Cep_chr]CEP
+      ,[loj_Contato_chr]Contato
+      ,[loj_Cargo_chr]Cargo
+      ,[loj_Telefone_chr]Telefone
+      ,[loj_Celular_chr]Celular
+      ,[loj_Fax_chr]Fax
+      ,[loj_Email_chr]Email
+      ,[tlj_TipoLoja_int_FK]Categoria_IMS
+      ,CASE[loj_Shopping_int_FK]WHEN 0 Then 'Loja de Rua' ELSE 'Shopping' END Shopping
+      ,CASE [reg_Regiao_int_FK]
+          WHEN 1 Then 'Rio de Janeiro'
+          WHEN 2 Then 'São Paulo Capital'
+          WHEN 3 Then 'São Paulo Interior'
+          WHEN 4 Then 'Minas Gerais'
+      END Região
+      ,CASE[loj_Status_ind]
+      WHEN 1 THEN 'ATIVO'
+      WHEN 0 THEN 'INATIVO'
+      END STATUS
+      ,[loj_GerenteConta_chr]GerenteConta
+      ,[cao_CampoAdicionalOpcao_chr]TipoCliente
+       FROM [XMPromotores_MeadJohnson].[dbo].[TB_REP_Loja_loj]loj
+  INNER JOIN TB_REP_Cliente_cli cli ON cli.cli_Cliente_int_PK =loj.cli_Cliente_int_FK
+  left JOIN dbo.TB_REP_CampoAdicionalValor_cav cav ON cav_Referencia_int_FK =LOJ.loj_Loja_int_PK
+  wHERE cad_CampoAdicional_int_FK = 1

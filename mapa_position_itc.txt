@@ -1,0 +1,8 @@
+.Mapa
+{   position:absolute;
+	float:right;
+	width:300px;	
+	height:180px;
+	margin-left:370px;
+    margin-top :-40px;
+}

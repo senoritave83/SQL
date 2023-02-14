@@ -1,0 +1,30 @@
+/****** Script for SelectTopNRows command from SSMS  ******/
+SELECT TOP 1000 [emp_Empresa_int_FK]
+      ,[vis_Visita_int_PK]
+      ,[loj_Loja_int_FK]
+      ,[pro_Promotor_int_FK]
+      ,[vis_DataInicio_dtm]
+      ,[vis_DataFinalizacao_dtm]
+      ,[vis_Data_dtm]
+      ,[vis_NumDevice_int]
+      ,[vis_Status_int]
+      ,[vis_NumProdutosVisita_int]
+      ,[tjf_TipoJustificativa_int_FK]
+      ,[usu_Responsavel_int_FK]
+      ,[vis_LatitudeInicio_num]
+      ,[vis_LatitudeFinalizacao_num]
+      ,[vis_LongitudeInicio_num]
+      ,[vis_LongitudeFinalizacao_num]
+      ,[vis_StatusVisita_ind]
+      ,[muf_MotivoUsoForm_int_FK]
+      ,[vis_DataEmissao_dtm]
+      ,[vis_Teste_ind]
+  FROM [XMPromotores_Trifil].[dbo].[TB_REP_Visita_vis]
+  Where pro_Promotor_int_FK=91 and tjf_TipoJustificativa_int_FK=0 and vis_Data_dtm > = '2012-07-05 00:00:00.000' AND vis_DataInicio_dtm <= '2012-12-05 00:00:00.000'
+
+   
+--SELECT * from [TB_REP_Visita_vis]Where vis_Visita_int_PK IN(6850,5828)
+
+  
+ UPDATE [TB_REP_Visita_vis] SET [tjf_TipoJustificativa_int_FK] = 0 WHERE pro_Promotor_int_FK=91 and tjf_TipoJustificativa_int_FK=2 and vis_Data_dtm > = '2012-07-05 00:00:00.000' AND vis_DataInicio_dtm <= '2012-12-05 00:00:00.000'
+   

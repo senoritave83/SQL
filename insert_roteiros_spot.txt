@@ -1,0 +1,85 @@
+use XMPromotores_Spot
+
+go
+declare @idempresa int, @IdLoja int, @IdPromotor int,
+		@Sem1 varchar, @Sem2 varchar, @Sem3 varchar, @Sem4 varchar, @Sem5 varchar,
+		@Seg varchar, @Ter varchar, @Qua varchar, @Qui varchar, @Sex varchar, @Sab varchar,
+		@IdRoteiro int
+		
+set @idempresa = 11
+
+declare curDados cursor for
+select	[id_loja], [ID_PROMOTOR], 
+		Isnull([1a Semana do mês],'') Sem1, 
+		Isnull([2a Semana do mês],'') Sem2, 
+		Isnull([3a Semana do mês],'') Sem3, 
+		Isnull([4a Semana do mês],'') Sem4, 
+		Isnull([5a Semana do mês],'') Sem5,
+		Isnull([Segunda-Feira],'') Seg, 
+		Isnull([Terça-Feira],'') Ter, 
+		Isnull([Quarta-Feira],'') Qua, 
+		Isnull([Quinta-Feira],'') Qui, 
+		Isnull([Sexta-Feira],'') Sex, 
+		Isnull([Sábado],'') Sab
+		
+from	[CARGA_ROTEIROS_ABRIL2013] (nolock)
+
+open curDados
+
+fetch next from curDados into @IdLoja , @IdPromotor ,
+		@Sem1 , @Sem2 , @Sem3 , @Sem4 , @Sem5 ,
+		@Seg , @Ter , @Qua , @Qui , @Sex , @Sab
+		
+while @@FETCH_STATUS = 0
+begin
+
+	set @IdRoteiro = 0
+	
+	insert
+	into	[TB_REP_Roteiro_rot]
+	values(@idempresa, @idpromotor, GETDATE(),  
+	case when @Seg = 's' then 2 else 0 end + 
+	case when @Ter = 's' then 4 else 0 end + 
+	case when @Qua = 's' then 8 else 0 end + 
+	case when @Qui = 's' then 16 else 0 end + 
+	case when @Sex = 's' then 32 else 0 end + 
+	case when @Sab = 's' then 64 else 0 end ,
+	0,0,2013,1,
+	case when @Sem1 = 's' then 1 else 0 end + 
+	case when @Sem2 = 's' then 2 else 0 end +
+	case when @Sem3 = 's' then 4 else 0 end +
+	case when @Sem4 = 's' then 8 else 0 end +
+	case when @Sem5 = 's' then 16 else 0 end,
+	0)
+	
+	
+	/*
+	select @IdLoja , @IdPromotor ,
+	case when @Sem1 = 1 then 1 else 0 end + 
+	case when @Sem2 = 1 then 2 else 0 end +
+	case when @Sem3 = 1 then 4 else 0 end +
+	case when @Sem4 = 1 then 8 else 0 end +
+	case when @Sem5 = 1 then 16 else 0 end Semanas,
+	case when @Seg = 1 then 2 else 0 end + 
+	case when @Ter = 1 then 4 else 0 end + 
+	case when @Qua = 1 then 8 else 0 end + 
+	case when @Qui = 1 then 16 else 0 end + 
+	case when @Sex = 1 then 32 else 0 end + 
+	case when @Sab = 1 then 64 else 0 end 
+	
+	*/
+	
+	set @IdRoteiro = @@IDENTITY
+	
+	insert
+	into	[TB_REP_RoteiroLoja_rtl]
+	values(@IdRoteiro, @idempresa, @IdLoja, '0', '0', '0', '0',0, 1)		
+		
+	fetch next from curDados into @IdLoja , @IdPromotor ,
+		@Sem1 , @Sem2 , @Sem3 , @Sem4 , @Sem5 ,
+		@Seg , @Ter , @Qua , @Qui , @Sex , @Sab 
+
+end
+
+close curDados
+deallocate curDados

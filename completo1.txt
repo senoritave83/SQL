@@ -1,0 +1,9 @@
+Categoria.aspx,categoria.aspx.vb, clsCategoria.vb, PROCEDURE sv_categoria
+Produto.aspx,Produto.aspx.vb, clsProduto.vb, PRocedure sv_Produto
+Vendedores.aspx,  Vendedor.aspx.vb,clsVendedor.vb, PRocedure sv_Vendedor
+Cliente.aspx,Cliente.aspx.vb,clsCliente.vb, PROCEDURE sv_Clientes
+MensagemDia.aspx,MensagemDia.aspx.vb
+PEdidoEStoquevendedor.aspx,PEdidoEStoquevendedor.aspx.vb,PEdidoEStoquevendedor.vb,clsPEdidoEStoquevendedor.asp
+Relatorios.aspx,Relatorios.aspx.vb
+Grupo.aspx.vb,Justificativa.aspx.vb,SituaçãoPEdido.aspx.vb,usuario.aspx.vb
+PErmissao.aspx.vb

@@ -1,0 +1,14 @@
+SELECT TOP 1000 vis.[emp_Empresa_int_FK]
+      ,[vis_Visita_int_PK]
+      ,[loj_Loja_int_FK]
+      ,loj_Loja_chr
+      ,[pro_Promotor_int_FK]
+      ,[vis_Teste_ind]
+  FROM [XMPromotores_MeadJohnson].[dbo].[TB_REP_Visita_vis]vis
+  INNER JOIN TB_REP_Loja_loj  LOJ ON LOJ.loj_Loja_int_PK = vis.loj_Loja_int_FK  	 
+  WHere vis_Visita_int_PK IN (59165 ,59143)
+  
+  update [TB_REP_Visita_vis] set loj_Loja_int_FK = 1833 where vis_Visita_int_PK = 59143
+  update [TB_REP_Visita_vis] set loj_Loja_int_FK = 205 where vis_Visita_int_PK = 59165
+  
+UPDATE set loj=(valor para mudar)) aonde visita=(valor setar)

@@ -1,0 +1,55 @@
+INSERT INTO [XMPromotores_Spot].[dbo].[BACKUP_LOJAS_ABRIL_2013_2]
+           (
+            [emp_Empresa_int_FK]
+           ,[cli_Cliente_int_FK]
+           ,[loj_Codigo_chr]
+           ,[loj_Loja_chr]
+           ,[loj_CNPJ_chr]
+           ,[loj_IE_chr]
+           ,[loj_Endereco_chr]
+           ,[loj_Numero_chr]
+           ,[loj_Complemento_chr]
+           ,[loj_Bairro_chr]
+           ,[loj_Cidade_chr]
+           ,[loj_UF_chr]
+           ,[loj_Cep_chr]
+           ,[loj_Contato_chr]
+           ,[loj_Cargo_chr]
+           ,[loj_Telefone_chr]
+           ,[loj_Celular_chr]
+           ,[loj_Fax_chr]
+           ,[loj_Email_chr]
+           ,[tlj_TipoLoja_int_FK]
+           ,[loj_Shopping_int_FK]
+           ,[reg_Regiao_int_FK]
+           ,[loj_Status_ind]
+           ,[loj_RazaoSocial_chr]
+           )
+     SELECT
+           11 ,
+           [IDRevenda],
+           [Codigo],
+           [Loja],
+           [CNPJ],
+           [IE],
+           [Endereco],
+           [Numero],
+           [Complemento],
+           [Bairro],
+           [Cidade],
+           [UF],
+           [Cep],
+           [Contato],
+           [Cargo],
+           [Telefone],
+           [Celular],
+           [Fax],
+           [Email],
+           [Categoria do IMS],
+           [Shopping],
+           [Regiao],
+           [Status],
+           [RazaoSocial]
+   FROM CARGAS_LOJAS_ABRIL2013 car
+   --INNER JOIN BACKUP_LOJAS_ABRIL_2013_2 t1  ON t1.[loj_Codigo_chr] = car.[Codigo]
+   

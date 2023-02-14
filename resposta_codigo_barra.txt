@@ -1,0 +1,101 @@
+USE [XMPromotores]
+GO
+/****** Object:  StoredProcedure [dbo].[SP_REP_WEB_LS_VISITA_PERGUNTAS_ENTIDADE]    Script Date: 11/21/2012 16:42:09 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER PROCEDURE [dbo].[SP_REP_WEB_LS_VISITA_PERGUNTAS_ENTIDADE]
+@IDEMPRESA AS int,
+@IDVISITA AS int,
+@TIPOENTIDADE AS TINYINT
+AS
+BEGIN
+	SET NOCOUNT ON
+	
+	create table #tblDadosEntidade
+	(
+		IdReferencia	int,
+		Referencia		varchar(500)
+	)
+	
+	if @TIPOENTIDADE =1 --produtos
+		begin
+			
+			INSERT
+			INTO	#tblDadosEntidade
+			SELECT	prd_Produto_int_PK,
+					prd_Descricao_chr
+			from	tb_rep_produto_prd (nolock)
+			where	emp_empresa_int_fk = @IDEMPRESA
+				
+		end
+	else if @TIPOENTIDADE =4 --categorias
+		begin
+			INSERT
+			INTO	#tblDadosEntidade
+			SELECT	cat_Categoria_int_PK,
+					cat_Categoria_chr
+			from	tb_rep_categoria_cat (nolock)
+			where	emp_empresa_int_fk = @IDEMPRESA
+		end
+	else if @TIPOENTIDADE =5 --subcategorias
+		begin
+			INSERT
+			INTO	#tblDadosEntidade
+			SELECT	sct_subCategoria_int_PK,
+					sct_subCategoria_chr
+			from	tb_rep_subcategoria_sct (nolock)
+			where	emp_empresa_int_fk = @IDEMPRESA
+		end	
+	else if @TIPOENTIDADE =7 --lojas
+		begin
+			INSERT
+			INTO	#tblDadosEntidade
+			SELECT	loj_Loja_int_PK,
+					loj_Loja_chr
+			from	tb_rep_loja_loj (nolock)
+			where	emp_empresa_int_fk = @IDEMPRESA		
+		end
+	
+
+	SELECT	vis_Visita_int_FK IDVisita, 
+			prg_Pergunta_int_PK IDPergunta, 
+			prg_Pergunta_chr Pergunta, 
+			prg_TipoCampo_ind TipoCampo,
+			isnull(IdReferencia,0) IdReferencia,
+			isnull(Referencia,'') Referencia,
+			CASE prg_TipoCampo_ind 
+				WHEN 6 THEN 
+					dbo.getRespostaEntidade(vis_visita_int_fk, @TIPOENTIDADE, vir.vir_Referencia_int_FK, prg_pergunta_int_pk, @idempresa) + ' - ' + 
+					ISNULL((
+					SELECT	prd_Descricao_chr
+					FROM	TB_REP_Produto_prd 
+					WHERE	prd_CodigoBarras_chr = dbo.getRespostaEntidade(vis_visita_int_fk, @TIPOENTIDADE, vir.vir_Referencia_int_FK, prg_pergunta_int_pk, @idempresa)), 'PRODUTO NÃO CADASTRADO')
+				ELSE dbo.getRespostaEntidade(vis_visita_int_fk, @TIPOENTIDADE, vir.vir_Referencia_int_FK, prg_pergunta_int_pk, @idempresa) 
+			END Resposta
+	FROM	TB_REP_VisitaResposta_vir vir (NOLOCK) 
+	LEFT	JOIN TB_REP_Pergunta_prg prg (NOLOCK) ON prg_Pergunta_int_FK = prg_Pergunta_int_PK AND vir.emp_Empresa_int_FK = prg.emp_Empresa_int_FK
+	LEFT	JOIN #tblDadosEntidade ent on ent.IdReferencia = vir.vir_Referencia_int_FK
+    WHERE	vis_Visita_int_FK = @IDVISITA
+	AND		vir.emp_Empresa_int_FK = @IDEMPRESA
+	AND		vir_TipoEntidade_ind = @TIPOENTIDADE
+	group	by vis_Visita_int_FK, 
+			prg_Pergunta_int_PK, 
+			prg_Pergunta_chr, 
+			prg_TipoCampo_ind,
+			vir.vir_Referencia_int_FK,
+			IdReferencia,
+			Referencia,
+			IdReferencia
+	order	by Referencia, prg_Pergunta_chr
+
+
+END
+
+GO
+/**[SP_REP_WEB_LS_VISITA_PERGUNTAS_ENTIDADE]
+@IDEMPRESA =10,
+@IDVISITA =1405,
+@TIPOENTIDADE  = 7/**

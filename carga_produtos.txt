@@ -1,0 +1,69 @@
+
+INSERT INTO [XMPromotores_NVH].[dbo].[TB_REP_Produto_prd]
+           ([emp_Empresa_int_FK]
+           ,[prd_Codigo_chr]
+           ,[prd_Descricao_chr]
+           ,[prd_DescricaoResumida_chr]
+           ,[sct_SubCategoria_int_FK]
+           ,[for_Fornecedor_int_FK]
+           ,[prd_Criado_dtm]
+           ,[prd_DataSync_dtm]
+           ,[prd_PrecoMinimo_cur]
+           ,[prd_PrecoMaximo_cur]
+           ,[prd_PrecoSugerido_cur]
+           ,[prd_Ativo_ind]
+           ,[cco_CategoriaCombinada_int_FK]
+           ,[scs_ScreenSize_int_FK]
+           ,[res_Resolucao_int_FK]
+           ,[con_Conversor_int_FK]
+           ,[fre_Frequencia_int_FK]
+           ,[prd_StatusComercio_ind]
+           ,[prd_StatusPesquisa_ind]
+           ,[prd_PoliticaPrecoMinimo_cur]
+           ,[prd_PoliticaPrecoMaximo_cur]
+           ,[prd_Ordem_int]
+           ,[prd_CodigoBarras_chr])
+     SELECT
+            18
+           ,(right('00000' + cast([Codigo] as varchar(50)), 5))
+           ,[Descricao]
+           ,[DescricaoResumida]
+           ,CASE Segmento 
+            WHEN 'Apontadores' THEN 1
+			WHEN 'Borrachas'   THEN 2
+			WHEN 'Caixa'  THEN 29
+			WHEN 'Caneta Hidrográficas'  THEN 30
+			WHEN 'Canetas'  THEN 31
+			WHEN 'Escritório' THEN 32
+			WHEN 'Estilete' THEN 8
+			WHEN 'Giz'  THEN 33
+			WHEN 'Grampeadores' THEN 10
+			WHEN 'Lápis'  THEN 34
+			WHEN 'Marcador de Texto'  THEN 14
+			WHEN 'Outros'  THEN 35
+			WHEN 'Perfurador'  THEN 17
+			WHEN 'Tesouras'  THEN 18
+			WHEN 'Traçados'  THEN 20
+            else 0          
+            END
+           ,1
+           ,GETDATE()
+           ,GETDATE()
+           ,0
+           ,0
+           ,0
+           ,1
+           ,0
+           ,0
+           ,0
+           ,0
+           ,0
+           ,1
+           ,1
+           ,0
+           ,0
+           ,codigo
+           ,''
+           
+FROM Carga_Produtos_NVH
+

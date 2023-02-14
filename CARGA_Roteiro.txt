@@ -1,0 +1,42 @@
+INSERT INTO [XMPromotores_NVH].[dbo].[TB_REP_Roteiro_rot]
+           ([emp_Empresa_int_FK]
+           ,[pro_Promotor_int_FK]
+           ,[rot_Data_dtm]
+           ,[rot_Dia_int]
+           ,[rot_Mes_int]
+           ,[rot_DiaSemana_int]
+           ,[rot_Ano_int]
+           ,[rot_Ativo_ind]
+           ,[rot_SemanaMes_int]
+           ,[rot_UnicoPeriodo_ind])
+     SELECT
+           18
+           ,CASE [Codigo do Promotor]
+                WHEN '9144' then 534
+                WHEN '9131' then 535
+                WHEN '9154' then 536
+                WHEN '9129' then 537
+                WHEN '9130' then 538
+                WHEN '9153' then 539
+                END  
+           ,GETDATE()
+           ,0
+           ,3072
+           ,CASE WHEN [Segunda-Feira] = 's'Then 1 
+                 WHEN [Terça-Feira] = 's' then 2
+                 WHEN [Quarta-Feira] = 's' then 4
+                 WHEN [Quinta-Feira] = 's' then 8
+                 WHEN [Sexta-Feira] = 's' then 16
+                 WHEN [Sábado] = 's' then 32
+                 WHEN [Domingo] = 's' then 64
+            END
+           ,0
+           ,1
+           ,CASE WHEN [1a Semana do mês] = 's' Then 1
+                 WHEN [2a Semana do mês] = 's' Then 2
+                 WHEN [3a Semana do mês] = 's' Then 4
+                 WHEN [4a Semana do mês] = 's' Then 8
+                 WHEN [5a Semana do mês] = 's' Then 16
+            END
+           ,0
+FROM  Carga_Roteiro_NVH

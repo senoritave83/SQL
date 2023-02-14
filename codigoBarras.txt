@@ -1,0 +1,5 @@
+SELECT vir_Resposta_chr ,prd_Descricao_chr,prd_CodigoBarras_chr
+   FROM dbo.TB_REP_VisitaResposta_vir vir (NOLOCK)  
+   INNER JOIN dbo.TB_REP_VisitaProduto_vsp vsp ON vir.vis_Visita_int_FK = vsp.vis_Visita_int_FK  
+   INNER JOIN dbo.TB_REP_Produto_prd prd ON prd.prd_Produto_int_PK =vsp.prd_Produto_int_FK
+   WHERE vir_Resposta_chr = '6'

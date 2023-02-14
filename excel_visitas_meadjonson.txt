@@ -1,0 +1,16 @@
+SELECT   vis_Visita_int_PK Visita,
+            loj_Codigo_chr Codigo,
+           loj_Loja_chr Loja,
+           lid_Lider_chr Coordenador,
+		   crd_Coordenador_chr Supervisor,
+           pro_Promotor_chr Promotor,
+           vis_Data_dtm DataRoteiro,
+		   CASE WHEN tjf_TipoJustificativa_chr <> '' Then tjf_TipoJustificativa_chr  else '' END Justificativa,
+           CASE WHEN Isnull(vis_Teste_ind,0)= '' then 'Nao' end Teste
+	       FROM TB_REP_Visita_vis vis (NOLOCK) INNER JOIN 
+	       TB_REP_Loja_loj loj (NOLOCK) ON vis.loj_Loja_int_FK = loj.loj_Loja_int_PK AND vis.emp_Empresa_int_FK = loj.emp_Empresa_int_FK INNER JOIN 
+	       TB_REP_Promotor_pro pro (NOLOCK) ON vis.pro_Promotor_int_FK = pro.pro_Promotor_int_PK AND vis.emp_Empresa_int_FK = pro.emp_Empresa_int_FK LEFT JOIN 
+	       TB_REP_Lider_lid lid (NOLOCK) ON pro.lid_lider_int_FK = lid.lid_lider_int_pK AND pro.emp_Empresa_int_FK = lid.emp_Empresa_int_FK LEFT JOIN 
+	       TB_REP_Coordenador_crd crd (NOLOCK) ON crd.crd_Coordenador_int_PK = lid.crd_Coordenador_int_FK AND crd.emp_Empresa_int_FK = lid.emp_Empresa_int_FK LEFT JOIN 
+	       TB_REP_TipoJustificativa_tjf tjf (NOLOCK) ON vis.tjf_TipoJustificativa_int_FK = tjf.tjf_TipoJustificativa_int_PK AND vis.emp_Empresa_int_FK = tjf.emp_Empresa_int_FK LEFT JOIN 
+		   TB_REP_VisitaStatus_vst vst (NOLOCK) on vis.vis_Status_int = vst.vst_Status_int_PK
