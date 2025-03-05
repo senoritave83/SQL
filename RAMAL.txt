@@ -1,32 +1,19 @@
-Para buscar linha – digite o “0”
+####XMSISTEMAS##### 
 
-Para puxar ligação – digite “49”
-
-Para passar ligação digitar o botão “flash” + número correspondente ao ramal:
+Para buscar linha ï¿½ digite o ï¿½0ï¿½
+Para puxar ligaï¿½ï¿½o ï¿½ digite ï¿½49ï¿½
+Para passar ligaï¿½ï¿½o digitar o botï¿½o ï¿½flashï¿½ + nï¿½mero correspondente ao ramal:
 
  
+
 
 Camilla (gerente de contas) / Marcelo (gerente de desenvolvimento e suporte) = 22
-
- 
-
 Luis Felipe (novos projetos) = 23
-
- 
-
 Franco (comercial e financeiro) = 24
-
- 
-
-Igor (aplicativo: desenvolvimento, programação e suporte) = 25
-
- 
-
-Daiana (Web designer) / Veronica (suporte e programação WEB) = 26
-
- 
-
-Wagner (novos projetos) / Ariane (suporte e programação WEB)  / Wilson (relatórios) = 27
+Igor (aplicativo: desenvolvimento, programaï¿½ï¿½o e suporte) = 25
+Daiana (Web designer) / Veronica (soporte e programacion WEB) = 26
+Wagner (novos projetos) / Ariane (suporte e programaï¿½ï¿½o WEB)  =28
+/ Wilson (relatï¿½rios SQL) = 27
 
  
 
